@@ -12,7 +12,7 @@ module.exports = {
       name: '@electron-forge/publisher-github',
       config: {
         repository: {
-          owner: 'AbdellahBahsine',
+          owner: 'xWayzeer',
           name: 'grounding-bell'
         },
         prerelease: false,
