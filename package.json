@@ -1,0 +1,37 @@
+{
+  "name": "grounding-bell",
+  "productName": "Grounding Bell",
+  "version": "1.0.0",
+  "description": "A mindfulness timer to help you stay present and manage anxiety through gentle reminders and grounding techniques.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "watch": "nodemon --ext js,css,html --exec electron .",
+    "package": "electron-forge package",
+    "publish": "electron-forge publish",
+    "make": "electron-forge make",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.10.2",
+    "@electron-forge/maker-deb": "^7.10.2",
+    "@electron-forge/maker-rpm": "^7.10.2",
+    "@electron-forge/maker-squirrel": "^7.10.2",
+    "@electron-forge/maker-zip": "^7.10.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.10.2",
+    "@electron-forge/plugin-fuses": "^7.10.2",
+    "@electron-forge/publisher-github": "^7.10.2",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^39.1.0",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "dotenv": "^17.2.3",
+    "electron-squirrel-startup": "^1.0.1",
+    "electron-store": "^6.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}

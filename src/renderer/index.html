@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroundingBell</title>
+
+    <link rel="icon" href="assets/icons/icon.png" />
+
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+<body>
+    <div id="titlebar">
+        <div class="window-controls">
+          <button id="min-btn">−</button>
+          <button id="max-btn">☐</button>
+          <button id="close-btn">✕</button>
+        </div>
+      </div>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <div>🧘</div>
+            </div>
+
+            <div class="logo-text">
+                <h2>GroundingBell</h2>
+                <p>Stay present, stay calm</p>
+            </div>
+        </div>
+
+        <button id="settings-btn" class="nav-btn selected">
+            <div class="nav-blob"></div>
+            <div class="nav-icon"><i class="fas fa-gear"></i></div>
+        </button>
+        <button id="home-btn" class="nav-btn">
+            <div class="nav-blob"></div>
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+        </button>
+    </header>
+    
+    <main>
+        <div id="home" class="home-page active">
+            <div class="home-wrapper">
+                <div class="timer-display" id="timerDisplay">00:00</div>
+    
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">⏰</span>
+                        Set Timer
+                    </div>
+                    <div class="timer-controls">
+                        <input type="number" class="time-input" id="minutesInput" placeholder="Min" min="1" max="999" value="0">
+                        <input type="number" class="time-input" id="secondsInput" placeholder="Sec" min="0" max="59" value="2">
+                    </div>
+                </div>
+    
+                <div class="section">
+                    <div class="bell-header">
+                        <div class="section-title">
+                            <span class="icon">🔔</span>
+                            Choose Bell Sound
+                        </div>
+                        <input id="volumeSlider" type="range" min="0" max="100" value="10">
+                    </div>
+                    <div class="bell-selector">
+                        <div class="bell-option" data-sound="tibetan">🏔️ Tibetan</div>
+                        <div class="bell-option" data-sound="chime">🎐 Chime</div>
+                        <div class="bell-option" data-sound="gong">🥁 Gong</div>
+                        <div class="bell-option" data-sound="singing">🔊 Singing</div>
+                        <div class="bell-option" data-sound="crystal">💎 Crystal</div>
+                        <div class="bell-option" data-sound="zen">🧘 Zen</div>
+                    </div>
+                </div>
+    
+                <div class="section">
+                    <div class="gt-header">
+                        <div class="section-title">
+                            <span class="icon">🧘‍♀️</span>
+                            Grounding Techniques
+                        </div>
+                    </div>
+                    <div id="gt-selector" class="gt-selector">
+                        <div class="gt-option" data-technique="5-4-3-2-1">👁️ 5-4-3-2-1 Technique</div>
+                        <div class="gt-option" data-technique="4-7-8">🌬️ 4-7-8 Breathing</div>
+                        <div class="gt-option" data-technique="box">📦 Box Breathing</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="control-buttons">
+                <button class="btn btn-primary" id="startBtn">Start</button>
+                <button class="btn btn-secondary" id="stopBtn" disabled>Stop</button>
+            </div>
+        </div>
+
+        <!-- Settings page -->
+        <div id="settings" class="settings-page">
+            <div class="settings-wrapper">
+                <div class="sidebar">
+                    <nav>
+                        <ul>
+                            <li id="feedback" class="selected">Feedback</li>
+                            <li id="privacy">Privacy policy</li>
+                            <li id="help">Help</li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="content">
+                    <!-- Feedback Settings -->
+                    <div id="feedback-tab" class="tab feedback">
+                        <div class="section">
+                            <h3>Provide Feedback</h3>
+                            <p>If you encounter issues or have suggestions for features, please let us know:</p>
+                            <textarea id="feedbackInput" class="feedback-input" placeholder="Enter your feedback here..."></textarea>
+                            <button id="sendFeedback" class="btn btn-secondary">Submit Feedback</button>
+                            <p id="statusMessage"></p>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Policy Settings -->
+                    <div id="privacy-tab" class="tab privacy">
+                        <div class="section">
+                            <p>Effective Date: <strong>November 11, 2025</strong></p>
+
+                            <p>At GroundingBell, we respect your privacy. Our app does not collect any personal information, store data online, or track your activity. All your preferences and settings are stored locally on your device.</p>
+
+                            <ul>
+                                <li>No personal data is collected: We do not require you to log in, and no personal information is stored.</li>
+    
+                                <li>Local Data: All data (e.g., preferences and settings) is stored securely on your device.</li>
+    
+                                <li>Third-party services: We currently do not use third-party analytics or tracking services.</li>
+                            </ul>
+
+
+                            <p>If you want to learn more about how we handle your data, please read our full Privacy Policy:</p>
+                            <a href="/privacy-policy" target="_blank" class="btn btn-secondary">View Privacy Policy</a>
+
+                            <p class="consent">By using the app, you consent to this Privacy Policy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Help settings -->
+                    <div id="help-tab" class="tab help">
+                        <div class="section">
+                            <h3>Contact Support</h3>
+                            <p>If you need help, please contact us at:</p>
+                            <a href="mailto:support@groundingbell.com" class="btn btn-secondary">Email Support</a>
+                        </div>
+                        
+                        <div class="section">
+                            <h3>About the App</h3>
+                            <p>GroundingBell is a meditation timer app designed to help you stay present and mindful. Version 1.0.0</p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="./renderer.js"></script>
+</body>
+</html>
