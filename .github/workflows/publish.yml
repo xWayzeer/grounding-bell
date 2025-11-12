@@ -11,6 +11,8 @@ jobs:
         strategy:
             matrix:
                 os: [ubuntu-latest, macos-latest, windows-latest]
+        permissions:
+            contents: write
 
         steps:
             - name: Checkout code
