@@ -5,8 +5,6 @@ dotenv.config()
 
 const path = require('node:path')
 
-const fetch = require('node-fetch')
-
 const Store = require('electron-store')
 const store = new Store()
 
