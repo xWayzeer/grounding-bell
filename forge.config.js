@@ -24,7 +24,7 @@ module.exports = {
   "makers": [
     {
       "name": "@electron-forge/maker-squirrel",
-      "platforms": ["win32", "win64"],
+      "platforms": ["ia32", "x64"],
       "config": {
         "name": "grounding-bell",
         "productName": "Grounding Bell",
