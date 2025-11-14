@@ -6,7 +6,7 @@ contextBridge.exposeInMainWorld('renderer', {
     close:    () => ipcRenderer.send("window:close"),
 
     set: (key, value) => ipcRenderer.invoke("settings:set", { key, value }),
-    get: (key) => ipcRenderer.invoke("settings:get", key),
+    get: (key, fallback) => ipcRenderer.invoke("settings:get", {key, fallback}),
 
     startTimer: (duration) => ipcRenderer.send('start-timer', duration),
     stopTimer: () => ipcRenderer.send('stop-timer'),

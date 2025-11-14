@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
 
+if (require('electron-squirrel-startup')) app.quit();
+
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -17,10 +19,11 @@ let userStopped = false
 let selectedBell = store.get('selectedBell', 'tibetan');
 let selectedTechnique = store.get('selectedTechnique', '5-4-3-2-1');
 
+
 const createWindow = () => {
     win = new BrowserWindow({
         width: 760,
-        height: 768,
+        height: 772,
         resizable: false,
         autoHideMenuBar: true,
         frame: false,
@@ -29,7 +32,7 @@ const createWindow = () => {
         webPreferences: {
             preload: path.join(__dirname, 'src/renderer/preload.js'),
             nodeIntegration: true,
-            contextIsolation: true
+            contextIsolation: true,
         }
     })
 
@@ -63,12 +66,13 @@ app.on('window-all-closed', () => {
 function showPopupWindow() {
     popupWindow = new BrowserWindow({
         width: 500,
-        height: 770,
+        height: 780,
         resizable: false,
         movable: true,
         alwaysOnTop: true,
-        frame: true,
         autoHideMenuBar: true,
+        frame: false,
+        titleBarStyle: "hidden",
         icon: path.join(__dirname, 'assets/icons/icon.png'),
         webPreferences: {
           preload: path.join(__dirname, 'src/popup/popupPreload.js'),
@@ -78,6 +82,12 @@ function showPopupWindow() {
     });
 
     popupWindow.loadFile('src/popup/popup.html');
+
+    ipcMain.on("win:minimize", () => popupWindow.minimize());
+    ipcMain.on("win:maximize", () => {
+        popupWindow.isMaximized() ? popupWindow.unmaximize() : popupWindow.maximize();
+    });
+    ipcMain.on("win:close", () => popupWindow.close());
 
     popupWindow.webContents.on('did-finish-load', async() => {
         popupWindow.webContents.send('popup-data', selectedTechnique);
@@ -165,6 +175,7 @@ ipcMain.handle('settings:set', (event, { key, value }) => {
   });
   
   // Get settings
-  ipcMain.handle('settings:get', (event, key) => {
-    return store.get(key);
+  ipcMain.handle('settings:get', (event, {key, fallback}) => {
+    console.log("key", key, "fallback", fallback)
+    return store.get(key, fallback);
   });

@@ -15,6 +15,7 @@ body {
     font-weight: 400;
     font-style: normal;
     color: #333;
+    padding-top: 36px;
 }
 
 a {
@@ -26,13 +27,45 @@ li {
 }
 
 #titlebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    min-height: 32px;
+    min-height: 42px;
     background: #141414;
     -webkit-app-region: drag;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    z-index: 9999;
+}
+
+#titlebar .logo {
+    gap: 6px;
+    padding-left: 8px;
+}
+
+#titlebar .logo h3 {
+    color: #f3f3f3;
+    font-size: 12px;
+}
+
+#titlebar .logo-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    width: 26px;
+    height: 26px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#titlebar .logo-icon div {
+    font-size: 10px;
+    background:  linear-gradient(135deg, #fff, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .window-controls {

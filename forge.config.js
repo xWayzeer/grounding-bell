@@ -28,7 +28,9 @@ module.exports = {
       "config": {
         "name": "grounding-bell",
         "productName": "Grounding Bell",
-        "executableName": "grounding-bell"
+        "executableName": "grounding-bell",
+        "icon": 'assets/icons/icon.ico',
+        "shortcutName": 'Grounding Bell',
       },
     },
     {

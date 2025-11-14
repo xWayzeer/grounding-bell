@@ -5,6 +5,10 @@ const exerciseIcon = document.getElementById('exerciseIcon');
 const progressDots = document.getElementById('progressDots');
 const breathingCircle = document.getElementById('breathingCircle');
 
+const minBtn = document.getElementById("min-btn");
+const maxBtn = document.getElementById("max-btn");
+const closeBtn = document.getElementById("close-btn");
+
 const techniques = {
     "5-4-3-2-1": [
       { text: 'Take a moment to relax and center yourself', type: 'next', icon: '🧘‍♀️' },
@@ -39,6 +43,18 @@ const techniques = {
       { text: 'Exhale slowly through your mouth', type: 'next', icon: '😮‍💨', breathOut: true },
     ]
 };
+
+minBtn.addEventListener("click", () => {
+    window.popupRenderer.minimize();
+});
+
+maxBtn.addEventListener("click", () => {
+    window.popupRenderer.maximize();
+});
+
+closeBtn.addEventListener("click", () => {
+    window.popupRenderer.close();
+});
 
 let currentStep = 0;
 let currentTechnique = [];

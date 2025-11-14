@@ -33,11 +33,11 @@ const feedbackInput = document.getElementById('feedbackInput')
 const statusMessage = document.getElementById('statusMessage');
 
 async function loadSettings() {
-    selectedBell = await window.renderer.get("selectedBell");
-    selectedTechnique = await window.renderer.get("selectedTechnique");
-    const volume = await window.renderer.get("volume");
-    const durMinutes = await window.renderer.get("durMinutes");
-    const durSeconds = await window.renderer.get("durSeconds");
+    selectedBell = await window.renderer.get("selectedBell", "tibetan");
+    selectedTechnique = await window.renderer.get("selectedTechnique", '5-4-3-2-1');
+    const volume = await window.renderer.get("volume", 0.1);
+    const durMinutes = await window.renderer.get("durMinutes", 30);
+    const durSeconds = await window.renderer.get("durSeconds", 0);
 
     bellOptions.forEach(option => {
         const sound = option.getAttribute("data-sound");
@@ -45,8 +45,9 @@ async function loadSettings() {
     });
 
     gtOptions.forEach(option => {
-        const sound = option.getAttribute("data-technique");
-        option.classList.toggle("selected", sound === selectedTechnique);
+        const technique = option.getAttribute("data-technique");
+        console.log("tech", technique)
+        option.classList.toggle("selected", technique === selectedTechnique);
     });
 
     volumeSlider.value = volume ?? 10;
