@@ -30,9 +30,3 @@ jobs:
               run: npm run publish
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Upload Forge Artifacts
-              uses: softprops/action-gh-release@v1
-              with:
-                files: "out/make/**/*"
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
